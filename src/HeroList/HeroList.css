@@ -1,0 +1,29 @@
+.heroes-wrapper {
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+}
+ul {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    list-style: none;
+    width: 90%;
+    margin-left: 5%;
+
+}
+ul .hero-list-item {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    border: 1px solid #777;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 5px;
+    background-color: antiquewhite;
+}
+ul .hero-list-item:hover {
+    background-color: bisque;
+    transform: translate(1px,1px);
+    cursor: pointer;
+}
