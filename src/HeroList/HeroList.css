@@ -2,6 +2,13 @@
     position: relative;
     width: 80%;
     margin-left: 10%;
+    opacity: 0;
+    -webkit-animation-name: changeOpacity; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: .8s; /* Safari 4.0 - 8.0 */
+    animation-name: changeOpacity;
+    animation-duration: .8s;
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-fill-mode: forwards;
 }
 ul {
     padding: 0;
@@ -26,4 +33,26 @@ ul .hero-list-item:hover {
     background-color: bisque;
     transform: translate(1px,1px);
     cursor: pointer;
+}
+
+.heroes-wrapper a {
+    text-decoration: none;
+}
+
+.heroes-wrapper .remove-button {
+    font-size: .8rem;
+    line-height: 1rem;
+}
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes changeOpacity {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Standard syntax */
+@keyframes changeOpacity {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

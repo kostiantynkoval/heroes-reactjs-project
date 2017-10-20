@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import './HeroExpand.css';
+import ToHomePageButton from '../shared/ToHomePageButton';
+import AddNewHeroButton from '../shared/AddNewHeroButton';
 
 class HeroExpand extends Component {
 
+
     render() {
-        return <div className="hero-expand">
-            My hero is: {this.props.selectedHero.name}
-        </div>
+        return (
+            <div>
+                <div className="container">
+                    <div className="row">
+                        <ToHomePageButton/>
+                        <div className="ml-1"><AddNewHeroButton/></div>
+
+                    </div>
+                </div>
+                <div className="hero-expand">
+                    My hero ID is: {this.props.match.params.id}
+                </div>
+            </div>
+        )
     }
 }
 
