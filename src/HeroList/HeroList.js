@@ -17,7 +17,7 @@ class HeroList extends Component {
     constructor(props) {
         super(props);
         this.addHero = this.addHero.bind(this);
-        console.log('constructor', this.props.heroes);
+        console.log('constructor', this);
     }
 
     addHero(hero) {
@@ -29,6 +29,7 @@ class HeroList extends Component {
         const index = this.props.heroes.findIndex(hero => {return hero.id === id});
         this.props.heroes.splice(index, 1);
         // this.setState(this.state);
+        history.push('/');
     }
 
     render() {
