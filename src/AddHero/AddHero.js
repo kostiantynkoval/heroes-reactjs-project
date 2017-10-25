@@ -20,6 +20,7 @@ class AddHero extends Component {
         console.log('input', input)
         if (input.value !== "") {
             this.props.onAddHero({id: id, name: input.value});
+
         }
         else {
             this.setState({inpHasError: ''});

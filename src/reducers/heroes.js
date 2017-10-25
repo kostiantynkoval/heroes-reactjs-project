@@ -1,14 +1,14 @@
 export default function () {
     return [
-        { id: 11, name: 'Mr. Nice' },
-        { id: 12, name: 'Narco' },
-        { id: 13, name: 'Bombasto' },
-        { id: 14, name: 'Celeritas' },
-        { id: 15, name: 'Magneta' },
-        { id: 16, name: 'RubberMan' },
-        { id: 17, name: 'Dynama' },
-        { id: 18, name: 'Dr IQ' },
-        { id: 19, name: 'Magma' },
-        { id: 20, name: 'Tornado' }
+        { id: 1000000000000001, name: 'Mr. Nice' },
+        { id: 1000000000000002, name: 'Narco' },
+        { id: 1000000000000003, name: 'Bombasto' },
+        { id: 1000000000000004, name: 'Celeritas' },
+        { id: 1000000000000005, name: 'Magneta' },
+        { id: 1000000000000006, name: 'RubberMan' },
+        { id: 1000000000000007, name: 'Dynama' },
+        { id: 1000000000000008, name: 'Dr IQ' },
+        { id: 1000000000000009, name: 'Magma' },
+        { id: 1000000000000010, name: 'Tornado' }
     ]
 }

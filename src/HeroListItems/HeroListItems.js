@@ -14,6 +14,7 @@ class HeroListItems extends Component {
     }
 
     render() {
+        console.log(this.props.heroes);
         return (
             <div>
                 <AddNewHeroButton/>

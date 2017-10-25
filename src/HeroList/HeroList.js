@@ -5,12 +5,17 @@ import { selected } from '../actions/index';
 import './HeroList.css';
 import HeroListItems from '../HeroListItems/HeroListItems';
 import HeroExpand from '../HeroExpand/HeroExpand';
-import AddHero from "../AddHero/AddHero";
+import AddHero from '../AddHero/AddHero';
 
 import { Route, Router } from 'react-router-dom';
+//import { browserHistory } from 'react-router-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
+import { syncHistoryWithStore } from 'react-router-redux';
+import store from '../../src/store-module';
 
-const history = createBrowserHistory();
+const history = syncHistoryWithStore(createBrowserHistory(), store);
+
+
 
 class HeroList extends Component {
 
@@ -33,6 +38,9 @@ class HeroList extends Component {
     }
 
     render() {
+        console.log('props', this.props);
+        console.log('state', this.state);
+        console.log('store', this.store);
         return (
             <div>
                 <Router history={history}>
@@ -47,9 +55,10 @@ class HeroList extends Component {
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
     console.log('stAte', state.heroes);
-    return {heroes: state.heroes}
+    console.log('ownProps', ownProps);
+    return {heroes: state.heroes, ownProps}
 }
 
 function matchDispatchToProps(dispatch) {
