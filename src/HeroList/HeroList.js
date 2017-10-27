@@ -6,29 +6,20 @@ import './HeroList.css';
 import HeroListItems from '../HeroListItems/HeroListItems';
 import HeroExpand from '../HeroExpand/HeroExpand';
 import AddHero from "../AddHero/AddHero";
-
+import history from '../index';
 import { Route, Router } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
 
-const history = createBrowserHistory();
 
 class HeroList extends Component {
 
     constructor(props) {
         super(props);
         this.addHero = this.addHero.bind(this);
-        console.log('constructor', this.props.heroes);
+        console.log('constructor', this.props);
     }
 
     addHero(hero) {
         this.props.heroes.push(hero);
-        history.push('/');
-    }
-
-    deleteHero(id) {
-        const index = this.props.heroes.findIndex(hero => {return hero.id === id});
-        this.props.heroes.splice(index, 1);
-        // this.setState(this.state);
     }
 
     render() {
@@ -36,8 +27,8 @@ class HeroList extends Component {
             <div>
                 <Router history={history}>
                     <div className="heroes-wrapper">
-                        <Route exact path="/" render={ (props) => <HeroListItems {...props} heroes={this.props.heroes} onDelete={this.deleteHero.bind(this)}/> } />
-                        <Route path="/add" render={ (props) => <AddNewHero {...props} handleNewHero={this.addHero} /> } />
+                        <Route exact path="/" component={ HeroListItems } />
+                        <Route path="/add" component={ AddHero } />
                         <Route path="/detail/:id" component={ HeroExpand } />
                     </div>
                 </Router>
@@ -46,9 +37,8 @@ class HeroList extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    console.log('stAte', state.heroes);
-    return {heroes: state.heroes}
+function mapStateToProps(state, ownProps) {
+    return {heroes: state.heroes, ownProps}
 }
 
 function matchDispatchToProps(dispatch) {
@@ -56,24 +46,3 @@ function matchDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(HeroList);
-
-
-class AddNewHero extends Component {
-
-    constructor(props) {
-        super(props);
-        this.putUpHero = this.putUpHero.bind(this)
-    }
-    putUpHero(hero) {
-        this.props.handleNewHero(hero)
-    }
-
-    render() {
-        return (
-            <AddHero getNewHero={this.putUpHero}/>
-        )
-    }
-}
-
-
-

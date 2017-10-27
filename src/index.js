@@ -8,11 +8,18 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App/App';
 import HeroList from './HeroList/HeroList';
+import createBrowserHistory from 'history/createBrowserHistory';
+import { syncHistoryWithStore } from 'react-router-redux';
 import registerServiceWorker from './registerServiceWorker';
 
+const store = createStore(
+    allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
+const history= syncHistoryWithStore(createBrowserHistory(), store);
+export default history ;
 
-const store = createStore(allReducers);
+store.subscribe(() => console.log('store changed', store.getState()));
 
 ReactDOM.render(
     <div>

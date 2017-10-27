@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './AddHero.css';
 import ToHomePageButton from '../shared/ToHomePageButton';
 
@@ -6,26 +7,23 @@ class AddHero extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {inpHasError: false}
+        this.state = {inpHasError: 'collapse'}
         this.addHero = this.addHero.bind(this);
     }
 
     addHero() {
         if (this.state.inpHasError) {
-            this.setState({inpHasError: false});
+            this.setState({inpHasError: 'collapse'});
         }
         let id = (Math.floor(Math.random() * 1000)+(Date.now()*1000));
         let val = this.refs.name.value;
         if (val !== "") {
-            this.props.getNewHero({id, name: val});
+            this.props.onAddHero({id,name: val});
         }
         else {
-            this.setState({inpHasError: true});
+            this.setState({inpHasError: ''});
             return false;
         }
-
-        console.log('Name: ', val);
-        console.log('ID', id);
     }
     render() {
         return (
@@ -33,8 +31,10 @@ class AddHero extends Component {
                 <ToHomePageButton/>
                 <div className="new-hero-form container d-flex flex-column align-items-center justify-content-center">
                     <h2 className="mt-3">Add New Hero:</h2>
-                    <input className="input-group col-8 m-2 p-2" ref="name" type="text" placeholder="Hero Name" required={true}/>
-                    <small className="collapse text-danger">This field is required</small>
+                    <div className="d-flex flex-column m-2 col-8">
+                        <input className="input-group p-2" ref="name" type="text" placeholder="Hero Name"/>
+                        <small className={this.state.inpHasError+" text-danger"}>This field is required</small>
+                    </div>
                     <button className="btn btn-info" onClick={this.addHero}>Add Hero</button>
                 </div>
             </div>
@@ -42,4 +42,6 @@ class AddHero extends Component {
     }
 }
 
-export default AddHero;
+export default connect(null, dispatch => ({
+    onAddHero: (hero) => {dispatch({type: 'HERO_ADDED', payload: hero})}
+}))(AddHero);

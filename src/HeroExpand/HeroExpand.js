@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './HeroExpand.css';
+import { connect } from 'react-redux';
 import ToHomePageButton from '../shared/ToHomePageButton';
 import AddNewHeroButton from '../shared/AddNewHeroButton';
 
@@ -24,4 +25,4 @@ class HeroExpand extends Component {
     }
 }
 
-export default HeroExpand;
+export default connect()(HeroExpand);
