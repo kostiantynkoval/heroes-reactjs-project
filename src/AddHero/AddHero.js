@@ -19,6 +19,8 @@ class AddHero extends Component {
         let val = this.refs.name.value;
         if (val !== "") {
             this.props.onAddHero({id,name: val});
+            this.props.history.push('/');
+            console.log('props', this.props);
         }
         else {
             this.setState({inpHasError: ''});
