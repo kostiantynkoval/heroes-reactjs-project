@@ -19,7 +19,6 @@ class HeroListItems extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('stAte', state.heroes);
     return {heroes: state.heroes}
 }
 
